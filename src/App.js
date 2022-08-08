@@ -6,7 +6,6 @@ import plus from "./images/Plus.svg";
 import close from "./images/CloseIcon.svg";
 import trash from "./images/Trash.svg";
 import heartDisabled from "./images/Trash.svg";
-import "./App.css";
 
 function App() {
   return (
