@@ -25,14 +25,16 @@ function App() {
 
   function handleEditProfileClick() {
     console.log("edit profile clicked");
-    const modal = document.querySelector("#edit-profile-modal");
-    modal.classList.add("modal_open");
+    /*const modal = document.querySelector("#edit-profile-modal");
+    modal.classList.add("modal_open");*/
+    setisEditProfilePopupOpen(true);
   }
 
   function handleEditPlaceClick() {
     console.log("edit place clicked");
-    const modal = document.querySelector("#add-card-modal");
-    modal.classList.add("modal_open");
+    /*const modal = document.querySelector("#add-card-modal");
+    modal.classList.add("modal_open");*/
+    setisAddPlacePopupOpen(true);
   }
 
   return (
