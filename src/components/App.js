@@ -1,11 +1,13 @@
-import logo from "./logo.svg";
-import header from "./images/Header.svg";
-import avatar from "./images/Avatar.jpg";
-import edit from "./images/Edit.svg";
-import plus from "./images/Plus.svg";
-import close from "./images/CloseIcon.svg";
-import trash from "./images/Trash.svg";
-import heartDisabled from "./images/Trash.svg";
+import header from "../images/Header.svg";
+import avatar from "../images/Avatar.jpg";
+import edit from "../images/Edit.svg";
+import plus from "../images/Plus.svg";
+import close from "../images/CloseIcon.svg";
+import trash from "../images/Trash.svg";
+import heartDisabled from "../images/Trash.svg";
+
+//import "./index.css";
+//import "./blocks/page.css";
 
 function App() {
   return (
