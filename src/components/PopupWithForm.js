@@ -1,16 +1,19 @@
 import close from "../images/CloseIcon.svg";
 
-export function PopupWithForm() {
+export function PopupWithForm({ title, name }) {
   return (
     /*modal for the edit avatar pic*/
-    <div className="modal" id="edit-avatar-modal">
+    <div className="modal" id={`{$props.name}-modal`}>
       <div className="modal__content">
         <button type="button" className="modal__close-button">
           <img src={close} alt="X" />
         </button>
-        <h2 className="modal__title">Change profile picture</h2>
+        <h2 className="modal__title">{title}</h2>
         <form name="avatarimage" className="modal__form">
-          /*This modal uses placeholder , but the other one uses value*/
+          /*form name was formerly avatarimage, will need to edit the code that
+          references the form name now using edit-avatar also id=
+          edit-avatar-modal*/ /*This modal uses placeholder , but the other one
+          uses value*/
           <input
             className="modal__input-text"
             type="url"

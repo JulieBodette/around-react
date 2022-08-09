@@ -7,12 +7,35 @@ import { Footer } from "./Footer.js";
 import { Main } from "./Main.js";
 
 import { PopupWithForm } from "./PopupWithForm.js";
+
+function handleEditAvatarClick() {
+  console.log("edit avatar clicked");
+  const modal = document.querySelector("#edit-avatar-modal");
+  modal.classList.add("modal_open");
+}
+
+function handleEditProfileClick() {
+  console.log("edit profile clicked");
+  const modal = document.querySelector("#edit-profile-modal");
+  modal.classList.add("modal_open");
+}
+
+function handleEditPlaceClick() {
+  console.log("edit place clicked");
+  const modal = document.querySelector("#add-card-modal");
+  modal.classList.add("modal_open");
+}
+
 function App() {
   return (
     <>
       <div className="page__content">
         <Header />
-        <Main />
+        <Main
+          onEditProfileClick={handleEditProfileClick}
+          onAddPlaceClick={handleEditPlaceClick}
+          onEditAvatarClick={handleEditAvatarClick}
+        />
         <Footer />
       </div>
       {/*End page content*/}
