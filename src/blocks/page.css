@@ -9,6 +9,7 @@
   max-width: 1289px; /*Figma desktop view is 1280px*/
   width: 100%; /*needed to make the photo grid fill the max space */
   margin: auto;
+  background-color: #000000;
 }
 
 /*styles for 320px screen*/
