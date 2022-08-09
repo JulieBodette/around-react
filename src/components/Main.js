@@ -2,6 +2,18 @@ import avatar from "../images/Avatar.jpg";
 import edit from "../images/Edit.svg";
 import plus from "../images/Plus.svg";
 
+function handleEditAvatarClick() {
+  console.log("edit avatar clicked");
+}
+
+function handleEditProfileClick() {
+  console.log("edit profile clicked");
+}
+
+function handleEditPlaceClick() {
+  console.log("edit place clicked");
+}
+
 export function Main() {
   return (
     <main>
@@ -9,7 +21,11 @@ export function Main() {
         {/* profile is a grid */}
         <div className="profile__image">
           <img className="profile__avatar" src={avatar} alt="Avatar" />
-          <button className="profile__icon" id="edit-avatar-button">
+          <button
+            className="profile__icon"
+            id="edit-avatar-button"
+            onClick={handleEditAvatarClick}
+          >
             {/*either set the background image of the button or do an <img> here */}
           </button>
         </div>
@@ -20,6 +36,7 @@ export function Main() {
             type="button"
             className="profile__info-edit-button"
             id="profile-info-edit-button"
+            onClick={handleEditProfileClick}
           >
             <img src={edit} alt="Edit" />
           </button>
@@ -30,6 +47,7 @@ export function Main() {
           type="button"
           className="profile__add-button"
           id="profile-add-button"
+          onClick={handleEditPlaceClick}
         >
           <img src={plus} alt="Add" />
         </button>
