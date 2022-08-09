@@ -47,6 +47,11 @@ function App() {
           onEditAvatarClick={handleEditAvatarClick}
         />
         <Footer />
+        <PopupWithForm
+          title="Update Profile Picture"
+          name="edit-avatar"
+          isOpen={isEditAvatarPopupOpen}
+        />
       </div>
       {/*End page content*/}
 
