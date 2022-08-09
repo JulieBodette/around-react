@@ -1,9 +1,11 @@
 import close from "../images/CloseIcon.svg";
 
-export function PopupWithForm({ title, name }) {
+export function PopupWithForm({ title, name, isOpen }) {
+  /*const modal = document.querySelector("#edit-avatar-modal");
+    modal.classList.add("modal_open");*/
   return (
     /*modal for the edit avatar pic*/
-    <div className="modal" id={`{$props.name}-modal`}>
+    <div className={isOpen ? "modal modal_open" : "modal"} id={`${name}-modal`}>
       <div className="modal__content">
         <button type="button" className="modal__close-button">
           <img src={close} alt="X" />
