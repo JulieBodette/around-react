@@ -1,59 +1,17 @@
-import header from "../images/Header.svg";
-import avatar from "../images/Avatar.jpg";
-import edit from "../images/Edit.svg";
-import plus from "../images/Plus.svg";
 import close from "../images/CloseIcon.svg";
 import trash from "../images/Trash.svg";
 import heartDisabled from "../images/Trash.svg";
 
-//import "./index.css";
-//import "./blocks/page.css";
-
+import { Header } from "./Header.js";
+import { Footer } from "./Footer.js";
+import { Main } from "./Main.js";
 function App() {
   return (
     <>
       <div className="page__content">
-        <header className="header">
-          <img className="header__image" src={header} alt="Around the US" />
-        </header>
-        <main>
-          <section className="profile">
-            {/* profile is a grid */}
-            <div className="profile__image">
-              <img className="profile__avatar" src={avatar} alt="Avatar" />
-              <button className="profile__icon" id="edit-avatar-button">
-                {/*either set the background image of the button or do an <img> here */}
-              </button>
-            </div>
-            <div className="profile__info">
-              {/*cannot be span (w3c error from having <p> tag) */}
-              <h1 className="profile__info-name"></h1>
-              <button
-                type="button"
-                className="profile__info-edit-button"
-                id="profile-info-edit-button"
-              >
-                <img src={edit} alt="Edit" />
-              </button>
-
-              <p className="profile__info-title"></p>
-            </div>
-            <button
-              type="button"
-              className="profile__add-button"
-              id="profile-add-button"
-            >
-              <img src={plus} alt="Add" />
-            </button>
-          </section>
-          <section className="grid">
-            {/*Elements section. This is a grid of pictures*/}
-            {/*inserted via javascript*/}
-          </section>
-        </main>
-        <footer className="footer">
-          <p className="footer__text">© 2021 Around The U.S.</p>
-        </footer>
+        <Header />
+        <Main />
+        <Footer />
       </div>
       {/*End page content*/}
 
