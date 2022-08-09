@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import close from "../images/CloseIcon.svg";
 import trash from "../images/Trash.svg";
 import heartDisabled from "../images/Trash.svg";
@@ -8,25 +10,31 @@ import { Main } from "./Main.js";
 
 import { PopupWithForm } from "./PopupWithForm.js";
 
-function handleEditAvatarClick() {
-  console.log("edit avatar clicked");
-  const modal = document.querySelector("#edit-avatar-modal");
-  modal.classList.add("modal_open");
-}
-
-function handleEditProfileClick() {
-  console.log("edit profile clicked");
-  const modal = document.querySelector("#edit-profile-modal");
-  modal.classList.add("modal_open");
-}
-
-function handleEditPlaceClick() {
-  console.log("edit place clicked");
-  const modal = document.querySelector("#add-card-modal");
-  modal.classList.add("modal_open");
-}
-
 function App() {
+  /*state variables responsible for visibility of popups*/
+  const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = useState(false);
+
+  function handleEditAvatarClick() {
+    console.log("edit avatar clicked");
+    /*const modal = document.querySelector("#edit-avatar-modal");
+    modal.classList.add("modal_open");*/
+    setisEditAvatarPopupOpen(true);
+  }
+
+  function handleEditProfileClick() {
+    console.log("edit profile clicked");
+    const modal = document.querySelector("#edit-profile-modal");
+    modal.classList.add("modal_open");
+  }
+
+  function handleEditPlaceClick() {
+    console.log("edit place clicked");
+    const modal = document.querySelector("#add-card-modal");
+    modal.classList.add("modal_open");
+  }
+
   return (
     <>
       <div className="page__content">
