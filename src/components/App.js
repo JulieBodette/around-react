@@ -10,6 +10,8 @@ import { Main } from "./Main.js";
 
 import { PopupWithForm } from "./PopupWithForm.js";
 
+import { apiObj } from "../utils/Api.js";
+
 function App() {
   /*state variables responsible for visibility of popups*/
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = useState(false);
