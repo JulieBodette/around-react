@@ -18,8 +18,9 @@ export function Main({
   //componentDidMount() {
   React.useEffect(() => {
     console.log("mount3ed");
-    apiObj.getUserInfo().then(() => {
+    apiObj.getUserInfo().then((userInfoResponse) => {
       console.log("got the user info");
+      setUserAvatar(userInfoResponse.avatar);
     });
 
     //use this code once we get cards working
@@ -47,7 +48,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       <section className="profile">
         {/* profile is a grid */}
         <div className="profile__image">
-          <img className="profile__avatar" src={avatar} alt="Avatar" />
+          <img className="profile__avatar" src={userAvatar} alt="Avatar" />
           <button
             className="profile__icon"
             id="edit-avatar-button"
