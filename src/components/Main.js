@@ -22,7 +22,10 @@ export function Main({
       .getUserInfo()
       .then((userInfoResponse) => {
         console.log("got the user info");
+        console.log(userInfoResponse);
         setUserAvatar(userInfoResponse.avatar);
+        setUserName(userInfoResponse.name);
+        setUserDescription(userInfoResponse.about);
       })
       .catch((err) => {
         console.log(err); // log the error to the console
@@ -64,7 +67,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         </div>
         <div className="profile__info">
           {/*cannot be span (w3c error from having <p> tag) */}
-          <h1 className="profile__info-name"></h1>
+          <h1 className="profile__info-name">{userName}</h1>
           <button
             type="button"
             className="profile__info-edit-button"
@@ -74,7 +77,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
             <img src={edit} alt="Edit" />
           </button>
 
-          <p className="profile__info-title"></p>
+          <p className="profile__info-title">{userDescription}</p>
         </div>
         <button
           type="button"
