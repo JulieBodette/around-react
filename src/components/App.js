@@ -78,15 +78,13 @@ function App() {
             </button>
           </form>
         </PopupWithForm>
-      </div>
-      {/*End page content*/}
 
-      <div className="modal" id="edit-profile-modal">
-        <div className="modal__content">
-          <button type="button" className="modal__close-button">
-            <img src={close} alt="X" />
-          </button>
-          <h2 className="modal__title">Edit profile</h2>
+        <PopupWithForm
+          title="Edit Profile"
+          name="edit-profile"
+          isOpen={isEditProfilePopupOpen}
+        >
+          {/*might need to mess with form name re:the brief and use edit-profile (the props.name) */}
           <form name="nameandtitle" className="modal__form">
             <input
               className="modal__input-text"
@@ -117,15 +115,14 @@ function App() {
               Save
             </button>
           </form>
-        </div>
-      </div>
+        </PopupWithForm>
 
-      <div className="modal" id="add-card-modal">
-        <div className="modal__content">
-          <button type="button" className="modal__close-button">
-            <img src={close} alt="X" />
-          </button>
-          <h2 className="modal__title">New Place</h2>
+        <PopupWithForm
+          title="New Place"
+          name="add-card"
+          isOpen={isAddPlacePopupOpen}
+        >
+          {/*might need to mess with form name re:the brief and use add-card (the props.name) */}
           <form name="imagenameandlink" className="modal__form">
             <input
               className="modal__input-text"
@@ -158,38 +155,15 @@ function App() {
               Create
             </button>
           </form>
-        </div>
+        </PopupWithForm>
+
+        <PopupWithForm
+          title="Are you sure?"
+          //fix the name and isOpen later - this is the confirmation popup for delete
+          name=""
+          isOpen={false}
+        ></PopupWithForm>
       </div>
-
-      {/*
-
-      <div className="modal" id="edit-avatar-modal">
-        <div className="modal__content">
-          <button type="button" className="modal__close-button">
-            <img src={close} alt="X" />
-          </button>
-          <h2 className="modal__title">Change profile picture</h2>
-          <form name="avatarimage" className="modal__form">
-
-            <input
-              className="modal__input-text"
-              type="url"
-              name="avatar"
-              placeholder="Image link"
-              id="avatar-link-input"
-              required
-            />            <span className="modal__error avatar-link-input-error">
-              error here
-            </span>
-
-            <button type="submit" className="modal__submit-button">
-              Save
-            </button>
-          </form>
-        </div>
-      </div>
-
-      */}
 
       {/*modal for the image popup*/}
       <div className="popup modal" id="image-popup">
