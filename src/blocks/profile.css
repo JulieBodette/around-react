@@ -75,6 +75,7 @@
   white-space: nowrap;
   overflow: hidden;
   grid-area: name;
+  color: white;
 }
 
 .profile__info-title {
@@ -93,6 +94,7 @@
   grid-area: title;
   text-align: left;
   align-self: start;
+  color: white;
 }
 
 .profile__info-edit-button {
