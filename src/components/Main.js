@@ -2,6 +2,8 @@ import avatar from "../images/Avatar.jpg";
 import edit from "../images/Edit.svg";
 import plus from "../images/Plus.svg";
 
+import { apiObj } from "../utils/Api.js";
+
 export function Main({
   onEditProfileClick,
   onAddPlaceClick,
