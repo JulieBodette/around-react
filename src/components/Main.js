@@ -18,10 +18,15 @@ export function Main({
   //componentDidMount() {
   React.useEffect(() => {
     console.log("mount3ed");
-    apiObj.getUserInfo().then((userInfoResponse) => {
-      console.log("got the user info");
-      setUserAvatar(userInfoResponse.avatar);
-    });
+    apiObj
+      .getUserInfo()
+      .then((userInfoResponse) => {
+        console.log("got the user info");
+        setUserAvatar(userInfoResponse.avatar);
+      })
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
 
     //use this code once we get cards working
     /* //Promise.all() takes multiple promises, and returns a single promise (an array of the results of the input promises)
