@@ -14,15 +14,18 @@ export function Main({
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
   const [userAvatar, setUserAvatar] = useState("");
+  const [cards, setCards] = useState([]);
 
   //componentDidMount() {
   React.useEffect(() => {
     console.log("mount3ed");
-    apiObj
-      .getUserInfo()
-      .then((userInfoResponse) => {
+    //Promise.all() takes multiple promises, and returns a single promise (an array of the results of the input promises)
+    //it rejects if ANY of the promises throw an error
+    //we use this to load the user info and get the initial cards
+    Promise.all([apiObj.getUserInfo(), apiObj.getInitialCards()])
+      .then(([userInfoResponse, cardsResponse]) => {
         console.log("got the user info");
-        console.log(userInfoResponse);
+        console.log(cardsResponse);
         setUserAvatar(userInfoResponse.avatar);
         setUserName(userInfoResponse.name);
         setUserDescription(userInfoResponse.about);

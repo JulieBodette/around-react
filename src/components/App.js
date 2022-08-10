@@ -202,7 +202,6 @@ function App() {
         </div>
       </div>
 
-      {/*template MUST be before the <script>, or the script cannot acess the template*/}
       <template id="card-template">
         {/*javascript finds this template via the id using queryselector*/}
         <div className="element">
