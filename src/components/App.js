@@ -37,6 +37,12 @@ function App() {
     setisAddPlacePopupOpen(true);
   }
 
+  function closeAllPopups() {
+    setisEditAvatarPopupOpen(false);
+    setisEditProfilePopupOpen(false);
+    setisAddPlacePopupOpen(false);
+  }
+
   return (
     <>
       <div className="page__content">
@@ -51,6 +57,7 @@ function App() {
           title="Update Profile Picture"
           name="edit-avatar"
           isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
         >
           <form name="avatarimage" className="modal__form">
             {/*form name was formerly avatarimage, will need to edit the code that
@@ -83,6 +90,7 @@ function App() {
           title="Edit Profile"
           name="edit-profile"
           isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
         >
           {/*might need to mess with form name re:the brief and use edit-profile (the props.name) */}
           <form name="nameandtitle" className="modal__form">
@@ -121,6 +129,7 @@ function App() {
           title="New Place"
           name="add-card"
           isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
         >
           {/*might need to mess with form name re:the brief and use add-card (the props.name) */}
           <form name="imagenameandlink" className="modal__form">
@@ -162,6 +171,7 @@ function App() {
           //fix the name and isOpen later - this is the confirmation popup for delete
           name=""
           isOpen={false}
+          onClose={closeAllPopups}
         ></PopupWithForm>
       </div>
 
