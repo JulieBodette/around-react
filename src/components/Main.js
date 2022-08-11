@@ -97,6 +97,16 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       <section className="grid">
         {/*Elements section. This is a grid of pictures*/}
         {/*array of cards via cards state variable goes here*/}
+        {cards.map((item) => (
+          <Card
+            likes={item.likes.length}
+            ownerId={item.owner._id}
+            cardId={item._id}
+            imageUrl={item.link}
+            imageText={item.name}
+          />
+        ))}
+
         <Card
           likes="5"
           ownerId="exampleplzchange"
