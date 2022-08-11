@@ -5,6 +5,8 @@ import plus from "../images/Plus.svg";
 
 import { apiObj } from "../utils/Api.js";
 
+import { Card } from "./Card.js";
+
 export function Main({
   onEditProfileClick,
   onAddPlaceClick,
@@ -29,6 +31,7 @@ export function Main({
         setUserAvatar(userInfoResponse.avatar);
         setUserName(userInfoResponse.name);
         setUserDescription(userInfoResponse.about);
+        setCards(cardsResponse);
       })
       .catch((err) => {
         console.log(err); // log the error to the console
@@ -93,7 +96,14 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
       </section>
       <section className="grid">
         {/*Elements section. This is a grid of pictures*/}
-        {/*inserted via javascript*/}
+        {/*array of cards via cards state variable goes here*/}
+        <Card
+          likes="5"
+          ownerId="exampleplzchange"
+          cardId="alsoexampleplzfix"
+          imageUrl="https://images.unsplash.com/photo-1496070242169-b672c576566b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnJvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          imageText="frog"
+        ></Card>
       </section>
     </main>
   );

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import close from "../images/CloseIcon.svg";
-import trash from "../images/Trash.svg";
-import heartDisabled from "../images/Trash.svg";
 
 import { Header } from "./Header.js";
 import { Footer } from "./Footer.js";
@@ -201,33 +199,6 @@ function App() {
           </form>
         </div>
       </div>
-
-      <template id="card-template">
-        {/*javascript finds this template via the id using queryselector*/}
-        <div className="element">
-          <button type="button" className="element__trash">
-            <img src={trash} alt="trash" className="element__trash-image" />
-          </button>
-          <div
-            className="element__image"
-            //style=""
-            alt=" "
-          ></div>
-          <div className="element__rectangle">
-            <h2 className="element__text"></h2>
-
-            {/*div contains like button and number of likes*/}
-            <button type="button" className="element__like">
-              <img
-                src={heartDisabled}
-                alt="like"
-                className="element__like-image"
-              />
-              <p className="element__like-text">0</p>
-            </button>
-          </div>
-        </div>
-      </template>
     </>
   );
 }
