@@ -99,6 +99,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         {/*array of cards via cards state variable goes here*/}
         {cards.map((item) => (
           <Card
+            key={item._id}
             likes={item.likes.length}
             ownerId={item.owner._id}
             cardId={item._id}
