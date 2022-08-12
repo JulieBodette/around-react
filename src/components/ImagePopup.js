@@ -10,7 +10,7 @@ export function ImagePopup({ card, onClose }) {
         <button type="button" className="modal__close-button" onClick={onClose}>
           <img src={close} alt="X" />
         </button>
-        <h2 className="popup__caption">insert caption here</h2>
+        <h2 className="popup__caption">{card.name}</h2>
       </div>
     </div>
   );
