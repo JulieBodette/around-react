@@ -21,14 +21,11 @@ export function Main({
 
   //componentDidMount() {
   React.useEffect(() => {
-    console.log("mount3ed");
     //Promise.all() takes multiple promises, and returns a single promise (an array of the results of the input promises)
     //it rejects if ANY of the promises throw an error
     //we use this to load the user info and get the initial cards
     Promise.all([apiObj.getUserInfo(), apiObj.getInitialCards()])
       .then(([userInfoResponse, cardsResponse]) => {
-        console.log("got the user info");
-        console.log(cardsResponse);
         setUserAvatar(userInfoResponse.avatar);
         setUserName(userInfoResponse.name);
         setUserDescription(userInfoResponse.about);
@@ -37,25 +34,6 @@ export function Main({
       .catch((err) => {
         console.log(err); // log the error to the console
       });
-
-    //use this code once we get cards working
-    /* //Promise.all() takes multiple promises, and returns a single promise (an array of the results of the input promises)
-//it rejects if ANY of the promises throw an error
-//we use this to load the user info and get the initial cards
-Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([userInfoResponse, cardsResponse]) => {
-    //user info set up
-    user.setAvatar(userInfoResponse.avatar);
-    userId = userInfoResponse._id;
-    user.setUserInfoTextOnly(userInfoResponse);
-    //cards set up
-    cardGridObject.setItems(cardsResponse);
-
-    cardGridObject.renderItems();
-  })
-  .catch((err) => {
-    console.log(err); // log the error to the console
-  }); */
   }, []); //empty array tells it to only do once (when it is mounted)
 
   return (

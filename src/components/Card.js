@@ -5,7 +5,6 @@ export function Card({ card, onCardClick }) {
   //we must send it the card that we clicked on so it knows what image to display
   function handleClick() {
     onCardClick(card);
-    console.log(card);
   }
   return (
     <div id="card-template">
