@@ -18,6 +18,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ![mobile](./src/images/mobile.PNG)
 ![desktop](./src/images/desktop.PNG)
 
+# GitHub Pages
+
+https://JulieBodette.github.io/around-react
+
 ## Additional React Info
 
 ## Available Scripts
