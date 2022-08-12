@@ -14,32 +14,32 @@ function App() {
   const [selectedCard, setSelectedCard] = useState();
 
   /*state variables responsible for visibility of popups*/
-  const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setisEditAvatarPopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
   function handleEditAvatarClick() {
     /*const modal = document.querySelector("#edit-avatar-modal");
     modal.classList.add("modal_open");*/
-    setisEditAvatarPopupOpen(true);
+    setIsEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
     /*const modal = document.querySelector("#edit-profile-modal");
     modal.classList.add("modal_open");*/
-    setisEditProfilePopupOpen(true);
+    setIsEditProfilePopupOpen(true);
   }
 
   function handleEditPlaceClick() {
     /*const modal = document.querySelector("#add-card-modal");
     modal.classList.add("modal_open");*/
-    setisAddPlacePopupOpen(true);
+    setIsAddPlacePopupOpen(true);
   }
 
   function closeAllPopups() {
-    setisEditAvatarPopupOpen(false);
-    setisEditProfilePopupOpen(false);
-    setisAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
     setSelectedCard(null);
   }
 
