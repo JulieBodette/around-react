@@ -11,7 +11,7 @@ import { PopupWithForm } from "./PopupWithForm.js";
 import { ImagePopup } from "./ImagePopup.js";
 
 function App() {
-  const [selectedCard, setSelectedCard] = useState();
+  const [selectedCard, setSelectedCard] = useState(null);
 
   /*state variables responsible for visibility of popups*/
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
