@@ -98,23 +98,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         {/*Elements section. This is a grid of pictures*/}
         {/*array of cards via cards state variable goes here*/}
         {cards.map((item) => (
-          <Card
-            key={item._id}
-            likes={item.likes.length}
-            ownerId={item.owner._id}
-            cardId={item._id}
-            imageUrl={item.link}
-            imageText={item.name}
-          />
+          <Card key={item._id} card={item} />
         ))}
-
-        <Card
-          likes="5"
-          ownerId="exampleplzchange"
-          cardId="alsoexampleplzfix"
-          imageUrl="https://images.unsplash.com/photo-1496070242169-b672c576566b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnJvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-          imageText="frog"
-        ></Card>
       </section>
     </main>
   );
