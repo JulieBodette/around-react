@@ -11,6 +11,7 @@ export function Main({
   onEditProfileClick,
   onAddPlaceClick,
   onEditAvatarClick,
+  onCardClick,
 }) {
   /*state variables */
   const [userName, setUserName] = useState("");
@@ -98,7 +99,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
         {/*Elements section. This is a grid of pictures*/}
         {/*array of cards via cards state variable goes here*/}
         {cards.map((item) => (
-          <Card key={item._id} card={item} />
+          <Card key={item._id} card={item} onCardClick={onCardClick} />
         ))}
       </section>
     </main>

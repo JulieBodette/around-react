@@ -1,7 +1,12 @@
 import trash from "../images/Trash.svg";
 import heartDisabled from "../images/Heart_disabled.svg";
 
-export function Card({ card }) {
+export function Card({ card, onCardClick }) {
+  //we must send it the card that we clicked on so it knows what image to display
+  function handleClick() {
+    onCardClick(card);
+    console.log(card);
+  }
   return (
     <div id="card-template">
       {/*javascript finds this template via the id using queryselector might get rid of template tag???*/}
@@ -16,6 +21,7 @@ export function Card({ card }) {
           //    this._cardImage.style = `background-image:url(${this._cardLink});`;
           //use .src here if image tag, I am using style and background image because it is button
           alt={card.name}
+          onClick={handleClick}
         ></div>
         <div className="element__rectangle">
           <h2 className="element__text">{card.name}</h2>

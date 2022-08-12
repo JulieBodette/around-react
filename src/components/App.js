@@ -9,6 +9,8 @@ import { Main } from "./Main.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 
 function App() {
+  const [selectedCard, setSelectedCard] = useState();
+
   /*state variables responsible for visibility of popups*/
   const [isEditProfilePopupOpen, setisEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setisAddPlacePopupOpen] = useState(false);
@@ -39,6 +41,12 @@ function App() {
     setisEditAvatarPopupOpen(false);
     setisEditProfilePopupOpen(false);
     setisAddPlacePopupOpen(false);
+    setSelectedCard(null);
+  }
+
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    console.log("handle card click in app.js");
   }
 
   return (
@@ -49,6 +57,7 @@ function App() {
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleEditPlaceClick}
           onEditAvatarClick={handleEditAvatarClick}
+          onCardClick={handleCardClick}
         />
         <Footer />
         <PopupWithForm
