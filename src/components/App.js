@@ -8,6 +8,8 @@ import { Main } from "./Main.js";
 
 import { PopupWithForm } from "./PopupWithForm.js";
 
+import { ImagePopup } from "./ImagePopup.js";
+
 function App() {
   const [selectedCard, setSelectedCard] = useState();
 
@@ -181,6 +183,11 @@ function App() {
           onClose={closeAllPopups}
         ></PopupWithForm>
       </div>
+
+      {/*had to make sure ImagePopup is only rendered if there is a selected card */}
+      {selectedCard && (
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+      )}
 
       {/*modal for the image popup*/}
       <div className="popup modal" id="image-popup">

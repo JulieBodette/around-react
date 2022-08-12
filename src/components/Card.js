@@ -18,8 +18,8 @@ export function Card({ card, onCardClick }) {
           className="element__image"
           style={{ backgroundImage: `url(${card.link})` }}
           //style must be wrapped in curly braces because JSX
-          //    this._cardImage.style = `background-image:url(${this._cardLink});`;
           //use .src here if image tag, I am using style and background image because it is button
+          //also the weird url(${this._cardLink});` is becasue background image, for src you can just use card.link
           alt={card.name}
           onClick={handleClick}
         ></div>
