@@ -1,4 +1,3 @@
-import { render, screen } from "@testing-library/react";
 import App from "./App";
 //might need to change file path to components/App
 
