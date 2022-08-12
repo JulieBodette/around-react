@@ -18,6 +18,8 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+
   function handleEditAvatarClick() {
     /*const modal = document.querySelector("#edit-avatar-modal");
     modal.classList.add("modal_open");*/
@@ -40,11 +42,15 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard(null);
+    setIsImagePopupOpen(false);
+    setTimeout(() => {
+      setSelectedCard(null);
+    }, 500);
   }
 
   function handleCardClick(card) {
     setSelectedCard(card);
+    setIsImagePopupOpen(true);
   }
 
   return (
@@ -180,10 +186,11 @@ function App() {
         />
       </div>
 
-      {/*had to make sure ImagePopup is only rendered if there is a selected card */}
-      {selectedCard && (
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-      )}
+      <ImagePopup
+        card={selectedCard}
+        onClose={closeAllPopups}
+        isOpen={isImagePopupOpen}
+      />
 
       {/*modal for the image popup*/}
       <div className="popup modal" id="image-popup">
