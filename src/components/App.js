@@ -177,7 +177,7 @@ function App() {
           name=""
           isOpen={false}
           onClose={closeAllPopups}
-        ></PopupWithForm>
+        />
       </div>
 
       {/*had to make sure ImagePopup is only rendered if there is a selected card */}
