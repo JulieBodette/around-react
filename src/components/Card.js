@@ -8,7 +8,6 @@ export function Card({ card, onCardClick }) {
   }
   return (
     <div id="card-template">
-      {/*javascript finds this template via the id using queryselector might get rid of template tag???*/}
       <div className="element">
         <button type="button" className="element__trash">
           <img src={trash} alt="trash" className="element__trash-image" />
