@@ -11,7 +11,9 @@
     /*transform: scale(0) looks cool but not what the brief is asking*/
   }
 }
+
 .modal {
+  display: flex; /*needed so that margin:auto works to center the box */
   /*make the background look faded by putting opacity over it*/
   background-color: rgba(0, 0, 0, 0.5);
   /*^^Do NOT do this as a seperate opacity command or it applies to the modal__content as well */
@@ -21,7 +23,7 @@
   top: 0;
   bottom: 0;
   /*end cover entire screen commands */
-  visibility: none; /*invisible*/
+  visibility: hidden; /*invisible*/
   opacity: 0; /*opacity has numeric value, so we can animate it*/
   pointer-events: none; /*can't interact with closed popup*/
   position: fixed; /*does not move when you scroll */
@@ -30,7 +32,6 @@
 
 .modal_open {
   /*make it visible */
-  display: flex; /*needed so that margin:auto works to center the box */
   /*you could also use justify-content + align-items center to align it */
   visibility: visible; /*visible*/
   opacity: 1; /*opacity has numeric value, so we can animate it*/
