@@ -17,23 +17,14 @@ export function Main({
 }) {
   const user = React.useContext(UserContext);
 
-  console.log("user is", user);
   /*state variables */
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
   const [cards, setCards] = useState([]);
 
-  //componentDidMount() {
   React.useEffect(() => {
-    //Promise.all() takes multiple promises, and returns a single promise (an array of the results of the input promises)
-    //it rejects if ANY of the promises throw an error
-    //we use this to load the user info and get the initial cards
-    Promise.all([apiObj.getUserInfo(), apiObj.getInitialCards()])
-      .then(([userInfoResponse, cardsResponse]) => {
-        setUserAvatar(userInfoResponse.avatar);
-        setUserName(userInfoResponse.name);
-        setUserDescription(userInfoResponse.about);
+    //load the initial cards from the server
+    apiObj
+      .getInitialCards()
+      .then((cardsResponse) => {
         setCards(cardsResponse);
       })
       .catch((err) => {
