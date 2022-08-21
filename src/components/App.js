@@ -10,7 +10,17 @@ import { PopupWithForm } from "./PopupWithForm.js";
 
 import { ImagePopup } from "./ImagePopup.js";
 
+import { apiObj } from "../utils/Api.js";
+
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  //this is called when the component is mounted. we pass it [] to make sure it only gets call once when its mounted
+  //otherwise it would be called every time it updates
+  React.useEffect(() => {
+    setCurrentUser(apiObj.getUserInfo());
+  }, []);
+
   const [selectedCard, setSelectedCard] = useState(null);
 
   /*state variables responsible for visibility of popups*/
