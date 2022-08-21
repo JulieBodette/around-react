@@ -7,12 +7,17 @@ import { apiObj } from "../utils/Api.js";
 
 import { Card } from "./Card.js";
 
+import { UserContext } from "../contexts/CurrentUserContext";
+
 export function Main({
   onEditProfileClick,
   onAddPlaceClick,
   onEditAvatarClick,
   onCardClick,
 }) {
+  const user = React.useContext(UserContext);
+
+  console.log("user is", user);
   /*state variables */
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
@@ -41,7 +46,11 @@ export function Main({
       <section className="profile">
         {/* profile is a grid */}
         <div className="profile__image">
-          <img className="profile__avatar" src={userAvatar} alt="Avatar" />
+          <img
+            className="profile__avatar"
+            src={user && user.avatar}
+            alt="Avatar"
+          />
           <button
             className="profile__icon"
             id="edit-avatar-button"
@@ -52,7 +61,7 @@ export function Main({
         </div>
         <div className="profile__info">
           {/*cannot be span (w3c error from having <p> tag) */}
-          <h1 className="profile__info-name">{userName}</h1>
+          <h1 className="profile__info-name">{user && user.name}</h1>
           <button
             type="button"
             className="profile__info-edit-button"
@@ -62,7 +71,7 @@ export function Main({
             <img src={edit} alt="Edit" />
           </button>
 
-          <p className="profile__info-title">{userDescription}</p>
+          <p className="profile__info-title">{user && user.about}</p>
         </div>
         <button
           type="button"

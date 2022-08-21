@@ -20,7 +20,9 @@ function App() {
   //this is called when the component is mounted. we pass it [] to make sure it only gets call once when its mounted
   //otherwise it would be called every time it updates
   React.useEffect(() => {
-    setCurrentUser(apiObj.getUserInfo());
+    apiObj.getUserInfo().then((userInfoResponse) => {
+      setCurrentUser(userInfoResponse);
+    });
   }, []);
 
   const [selectedCard, setSelectedCard] = useState(null);
