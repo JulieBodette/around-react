@@ -9,7 +9,6 @@ export function Card({ card, onCardClick, onCardLike }) {
   const user = React.useContext(UserContext);
   // Checking if the current user is the owner of the current card
   const isOwn = card.owner._id === user._id;
-  console.log(card, isOwn);
   function handleClick() {
     onCardClick(card);
   }

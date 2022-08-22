@@ -40,6 +40,28 @@ export function Main({
 
     console.log("you liked the card", isLiked);
     // Send a request to the API and getting the updated card data
+    //if !isLiked- if the card was not liked before and now the user wants to like it
+    if (!isLiked) {
+      console.log("you like the card");
+      apiObj.likeCard(card._id).then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      });
+    }
+    //if isLiked - if the user already liked it and is now unliking it
+    else {
+      console.log("you unlike the card");
+      apiObj.unlikeCard(card._id).then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      });
+    }
   }
 
   return (

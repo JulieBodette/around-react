@@ -69,7 +69,7 @@ class Api {
     }).then(this._processResponse);
   }
 
-  unLikeCard(id) {
+  unlikeCard(id) {
     const url = this._baseUrl + "/cards/likes/" + id;
     return fetch(url, {
       method: "DELETE",
