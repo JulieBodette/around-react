@@ -1,17 +1,29 @@
 import trash from "../images/Trash.svg";
 import heartDisabled from "../images/Heart_disabled.svg";
+import React from "react";
+import { UserContext } from "../contexts/CurrentUserContext";
 
 export function Card({ card, onCardClick }) {
   //we must send it the card that we clicked on so it knows what image to display
+
+  const user = React.useContext(UserContext);
+  // Checking if the current user is the owner of the current card
+  const isOwn = card.owner._id === user._id;
+  console.log(card, isOwn);
   function handleClick() {
     onCardClick(card);
   }
   return (
     <div id="card-template">
       <div className="element">
-        <button type="button" className="element__trash">
-          <img src={trash} alt="trash" className="element__trash-image" />
-        </button>
+        {/*only display the delete button if card is owned by current user*/}
+        {isOwn ? (
+          <button type="button" className="element__trash">
+            <img src={trash} alt="trash" className="element__trash-image" />
+          </button>
+        ) : (
+          <></>
+        )}
         <div
           className="element__image"
           style={{ backgroundImage: `url(${card.link})` }}
