@@ -15,7 +15,7 @@ export function Main({
   onEditAvatarClick,
   onCardClick,
 }) {
-  const user = React.useContext(UserContext);
+  const currentUser = React.useContext(UserContext);
 
   /*state variables */
   const [cards, setCards] = useState([]);
@@ -32,6 +32,16 @@ export function Main({
       });
   }, []); //empty array tells it to only do once (when it is mounted)
 
+  function handleCardLike(card) {
+    // Check one more time if this card was already liked
+    //The some() method tests whether at least one element in the array passes the test
+    //in this case, if 1 of the likes is from the current user, we need to make the heart dark
+    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+
+    console.log("you liked the card", isLiked);
+    // Send a request to the API and getting the updated card data
+  }
+
   return (
     <main>
       <section className="profile">
@@ -39,7 +49,7 @@ export function Main({
         <div className="profile__image">
           <img
             className="profile__avatar"
-            src={user && user.avatar}
+            src={currentUser && currentUser.avatar}
             alt="Avatar"
           />
           <button
@@ -52,7 +62,9 @@ export function Main({
         </div>
         <div className="profile__info">
           {/*cannot be span (w3c error from having <p> tag) */}
-          <h1 className="profile__info-name">{user && user.name}</h1>
+          <h1 className="profile__info-name">
+            {currentUser && currentUser.name}
+          </h1>
           <button
             type="button"
             className="profile__info-edit-button"
@@ -62,7 +74,9 @@ export function Main({
             <img src={edit} alt="Edit" />
           </button>
 
-          <p className="profile__info-title">{user && user.about}</p>
+          <p className="profile__info-title">
+            {currentUser && currentUser.about}
+          </p>
         </div>
         <button
           type="button"
@@ -77,7 +91,12 @@ export function Main({
         {/*Elements section. This is a grid of pictures*/}
         {/*array of cards via cards state variable goes here*/}
         {cards.map((item) => (
-          <Card key={item._id} card={item} onCardClick={onCardClick} />
+          <Card
+            key={item._id}
+            card={item}
+            onCardClick={onCardClick}
+            onCardLike={handleCardLike}
+          />
         ))}
       </section>
     </main>

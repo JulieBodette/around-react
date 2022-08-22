@@ -3,7 +3,7 @@ import heartDisabled from "../images/Heart_disabled.svg";
 import React from "react";
 import { UserContext } from "../contexts/CurrentUserContext";
 
-export function Card({ card, onCardClick }) {
+export function Card({ card, onCardClick, onCardLike }) {
   //we must send it the card that we clicked on so it knows what image to display
 
   const user = React.useContext(UserContext);
@@ -12,6 +12,9 @@ export function Card({ card, onCardClick }) {
   console.log(card, isOwn);
   function handleClick() {
     onCardClick(card);
+  }
+  function handleLikeClick() {
+    onCardLike(card);
   }
   return (
     <div id="card-template">
@@ -37,7 +40,11 @@ export function Card({ card, onCardClick }) {
           <h2 className="element__text">{card.name}</h2>
 
           {/*div contains like button and number of likes*/}
-          <button type="button" className="element__like">
+          <button
+            type="button"
+            className="element__like"
+            onClick={handleLikeClick}
+          >
             <img
               src={heartDisabled}
               alt="like"
