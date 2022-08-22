@@ -66,6 +66,15 @@ export function Main({
 
   function handleCardDelete(card) {
     console.log("u deleted the card");
+    apiObj
+      .deleteCard(card._id)
+      .then(() => {
+        //filter will only include cards that pass the test- in this case, it includes all cards except the deletedCard
+        setCards((state) =>
+          state.filter((CurrentCard) => CurrentCard._id !== card._id)
+        );
+      })
+      .then(console.log(cards));
   }
 
   return (
