@@ -3,7 +3,7 @@ import heartDisabled from "../images/Heart_disabled.svg";
 import React from "react";
 import { UserContext } from "../contexts/CurrentUserContext";
 
-export function Card({ card, onCardClick, onCardLike }) {
+export function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   //we must send it the card that we clicked on so it knows what image to display
 
   const currentUser = React.useContext(UserContext);
@@ -16,12 +16,19 @@ export function Card({ card, onCardClick, onCardLike }) {
   function handleLikeClick() {
     onCardLike(card);
   }
+  function handleDeleteClick() {
+    onCardDelete(card);
+  }
   return (
     <div id="card-template">
       <div className="element">
         {/*only display the delete button if card is owned by current user*/}
         {isOwn ? (
-          <button type="button" className="element__trash">
+          <button
+            type="button"
+            className="element__trash"
+            onClick={handleDeleteClick}
+          >
             <img src={trash} alt="trash" className="element__trash-image" />
           </button>
         ) : (

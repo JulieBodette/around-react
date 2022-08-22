@@ -64,6 +64,10 @@ export function Main({
     }
   }
 
+  function handleCardDelete(card) {
+    console.log("u deleted the card");
+  }
+
   return (
     <main>
       <section className="profile">
@@ -118,6 +122,7 @@ export function Main({
             card={item}
             onCardClick={onCardClick}
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
         ))}
       </section>
