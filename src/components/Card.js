@@ -6,9 +6,10 @@ import { UserContext } from "../contexts/CurrentUserContext";
 export function Card({ card, onCardClick, onCardLike }) {
   //we must send it the card that we clicked on so it knows what image to display
 
-  const user = React.useContext(UserContext);
+  const currentUser = React.useContext(UserContext);
   // Checking if the current user is the owner of the current card
-  const isOwn = card.owner._id === user._id;
+  const isOwn = card.owner._id === currentUser._id;
+  const isLiked = card.likes.some((user) => user._id === currentUser._id);
   function handleClick() {
     onCardClick(card);
   }
@@ -47,8 +48,11 @@ export function Card({ card, onCardClick, onCardLike }) {
             <img
               src={heartDisabled}
               alt="like"
-              className="element__like-image"
+              className={`element__like-image ${
+                isLiked ? "element__like_active" : ""
+              }`}
             />
+            {/*add the element__like_active class if it is liked by the current user. ps u gotta put the entire thing in {} bc its JSX code*/}
             <p className="element__like-text">{card.likes.length}</p>
           </button>
         </div>
