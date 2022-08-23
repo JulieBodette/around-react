@@ -1,9 +1,22 @@
 import { PopupWithForm } from "./PopupWithForm.js";
 import React, { useState } from "react";
+import { UserContext } from "../contexts/CurrentUserContext";
 
 export function EditProfilePopup({ isOpen, onClose }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
+  const currentUser = React.useContext(UserContext);
+
+  // After loading the current user from the API
+  // their data will be used in managed components.
+  React.useEffect(() => {
+    //the user is null before the api fetches it- need to check to make sure it is not null to avoid errors
+    if (currentUser) {
+      setName(currentUser.name);
+      setDescription(currentUser.about);
+    }
+  }, [currentUser]);
 
   function handleNameChange(e) {
     setName(e.target.value);
