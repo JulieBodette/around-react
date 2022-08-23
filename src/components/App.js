@@ -68,6 +68,16 @@ function App() {
     setIsImagePopupOpen(true);
   }
 
+  function handleUpdateUser(info) {
+    console.log("user was updated in app.js");
+    apiObj
+      .patchUserInfo(info)
+      .then((userInfoResponse) => {
+        setCurrentUser(userInfoResponse);
+      })
+      .then(closeAllPopups());
+  }
+
   return (
     <UserContext.Provider value={currentUser}>
       <div className="page">
@@ -116,6 +126,7 @@ function App() {
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
           />
 
           <PopupWithForm

@@ -2,7 +2,7 @@ import { PopupWithForm } from "./PopupWithForm.js";
 import React, { useState } from "react";
 import { UserContext } from "../contexts/CurrentUserContext";
 
-export function EditProfilePopup({ isOpen, onClose }) {
+export function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
@@ -32,6 +32,10 @@ export function EditProfilePopup({ isOpen, onClose }) {
     // Prevent the browser from navigating to the form address
     e.preventDefault();
     console.log("submitted");
+    onUpdateUser({
+      name,
+      about: description,
+    });
   }
 
   return (

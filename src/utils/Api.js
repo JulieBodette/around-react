@@ -35,7 +35,6 @@ class Api {
   }
 
   patchUserInfo(info) {
-    //user.getUserInfo() is passed in for info
     const url = this._baseUrl + "/users/me";
     return fetch(url, {
       method: "PATCH",
