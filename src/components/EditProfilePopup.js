@@ -28,6 +28,12 @@ export function EditProfilePopup({ isOpen, onClose }) {
     console.log(description);
   }
 
+  function handleSubmit(e) {
+    // Prevent the browser from navigating to the form address
+    e.preventDefault();
+    console.log("submitted");
+  }
+
   return (
     <PopupWithForm
       title="Edit Profile"
@@ -36,7 +42,7 @@ export function EditProfilePopup({ isOpen, onClose }) {
       onClose={onClose}
     >
       {/*might need to mess with form name re:the brief and use edit-profile (the props.name) */}
-      <form name="nameandtitle" className="modal__form">
+      <form name="nameandtitle" className="modal__form" onSubmit={handleSubmit}>
         {/*This isnput is a controlled component- the value is set to the name state value*/}
         <input
           className="modal__input-text"
