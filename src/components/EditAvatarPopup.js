@@ -1,6 +1,15 @@
 import { PopupWithForm } from "./PopupWithForm.js";
-
-export function EditAvatarPopup({ isOpen, onClose }) {
+import React from "react";
+export function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
+  const inputRef = React.useRef();
+  function handleSubmit(e) {
+    // Prevent the browser from navigating to the form address
+    e.preventDefault();
+    console.log("submitted");
+    onUpdateAvatar({
+      avatar: inputRef.current.value,
+    });
+  }
   return (
     <PopupWithForm
       title="Update Profile Picture"
@@ -8,13 +17,11 @@ export function EditAvatarPopup({ isOpen, onClose }) {
       isOpen={isOpen}
       onClose={onClose}
     >
-      <form name="avatarimage" className="modal__form">
-        {/*form name was formerly avatarimage, will need to edit the code that
-          references the form name now using edit-avatar also id=
-          edit-avatar-modal
-            This modal uses placeholder , but the other one
+      <form name="avatarimage" className="modal__form" onSubmit={handleSubmit}>
+        {/*This modal uses placeholder , but the other one
   uses value*/}
         <input
+          ref={inputRef}
           className="modal__input-text"
           type="url"
           name="avatar"
