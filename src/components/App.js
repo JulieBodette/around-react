@@ -10,7 +10,7 @@ import { PopupWithForm } from "./PopupWithForm.js";
 
 import { ImagePopup } from "./ImagePopup.js";
 
-import apiObj from "../utils/Api.js";
+import apiObj from "../utils/api.js";
 
 import { UserContext } from "../contexts/CurrentUserContext";
 import { EditProfilePopup } from "./EditProfilePopup";
