@@ -1,5 +1,32 @@
 import { PopupWithForm } from "./PopupWithForm.js";
-export function AddPlacePopup({ isOpen, onClose }) {
+import { UserContext } from "../contexts/CurrentUserContext";
+import React, { useState } from "react";
+
+export function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+  const [imageName, setImageName] = useState("");
+  const [imageLink, setImageLink] = useState("");
+
+  const currentUser = React.useContext(UserContext);
+
+  function handleImageNameChange(e) {
+    setImageName(e.target.value);
+  }
+
+  function handleImageLinkChange(e) {
+    setImageLink(e.target.value);
+  }
+
+  function handleSubmit(e) {
+    // Prevent the browser from navigating to the form address
+    e.preventDefault();
+    console.log("submitted");
+    onAddPlace({
+      name: imageName,
+      link: imageLink,
+      likes: [], //starts with no likes
+      owner: currentUser,
+    });
+  }
   return (
     <PopupWithForm
       title="New Place"
@@ -8,8 +35,13 @@ export function AddPlacePopup({ isOpen, onClose }) {
       onClose={onClose}
     >
       {/*might need to mess with form name re:the brief and use add-card (the props.name) */}
-      <form name="imagenameandlink" className="modal__form">
+      <form
+        name="imagenameandlink"
+        className="modal__form"
+        onSubmit={handleSubmit}
+      >
         <input
+          value={imageName}
           className="modal__input-text"
           type="text"
           name="imagename"
@@ -17,16 +49,19 @@ export function AddPlacePopup({ isOpen, onClose }) {
           minLength="1"
           maxLength="30"
           id="imagename-input"
+          onChange={handleImageNameChange}
           required
         />
         <span className="modal__error imagename-input-error">error here</span>
         {/*This modal uses placeholder , but the other one uses value*/}
         <input
+          value={imageLink}
           className="modal__input-text"
           type="url"
           name="imagelink"
           placeholder="Image link"
           id="imagelink-input"
+          onChange={handleImageLinkChange}
           required
         />
         {/*type=url is needed for validation- it checks to make sure user entered a url*/}

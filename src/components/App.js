@@ -91,6 +91,16 @@ function App() {
       .then(closeAllPopups());
   }
 
+  function handleAddPlace(info) {
+    console.log("yes");
+    apiObj
+      .uploadCard(info)
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+      })
+      .then(closeAllPopups());
+  }
+
   /////////////////////////////////////////////////////////////////////////////cards code
   /*state variables */
   const [cards, setCards] = useState([]);
@@ -182,6 +192,7 @@ function App() {
           <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
+            onAddPlace={handleAddPlace}
           />
 
           <PopupWithForm
