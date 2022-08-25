@@ -91,6 +91,67 @@ function App() {
       .then(closeAllPopups());
   }
 
+  /////////////////////////////////////////////////////////////////////////////cards code
+  /*state variables */
+  const [cards, setCards] = useState([]);
+
+  React.useEffect(() => {
+    //load the initial cards from the server
+    apiObj
+      .getInitialCards()
+      .then((cardsResponse) => {
+        setCards(cardsResponse);
+      })
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
+  }, []); //empty array tells it to only do once (when it is mounted)
+
+  function handleCardLike(card) {
+    // Check one more time if this card was already liked
+    //The some() method tests whether at least one element in the array passes the test
+    //in this case, if 1 of the likes is from the current user, we need to make the heart dark
+    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+
+    console.log("you liked the card", isLiked);
+    // Send a request to the API and getting the updated card data
+    //if !isLiked- if the card was not liked before and now the user wants to like it
+    if (!isLiked) {
+      console.log("you like the card");
+      apiObj.likeCard(card._id).then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      });
+    }
+    //if isLiked - if the user already liked it and is now unliking it
+    else {
+      console.log("you unlike the card");
+      apiObj.unlikeCard(card._id).then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      });
+    }
+  }
+
+  function handleCardDelete(card) {
+    console.log("u deleted the card");
+    apiObj
+      .deleteCard(card._id)
+      .then(() => {
+        //filter will only include cards that pass the test- in this case, it includes all cards except the deletedCard
+        setCards((state) =>
+          state.filter((CurrentCard) => CurrentCard._id !== card._id)
+        );
+      })
+      .then(console.log(cards));
+  }
+
   return (
     <UserContext.Provider value={currentUser}>
       <div className="page">
@@ -101,6 +162,9 @@ function App() {
             onAddPlaceClick={handleEditPlaceClick}
             onEditAvatarClick={handleEditAvatarClick}
             onCardClick={handleCardClick}
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
           <Footer />
 
