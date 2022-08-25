@@ -151,7 +151,9 @@ function App() {
           state.filter((CurrentCard) => CurrentCard._id !== card._id)
         );
       })
-      .then(console.log(cards));
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   return (
