@@ -71,7 +71,6 @@ function App() {
   }
 
   function handleUpdateUser(info) {
-    console.log("user was updated in app.js");
     apiObj
       .patchUserInfo(info)
       .then((userInfoResponse) => {
@@ -81,8 +80,6 @@ function App() {
   }
 
   function handleUpdateAvatar(info) {
-    console.log("updated avatar");
-    console.log(info);
     apiObj
       .patchUserAvatar(info)
       .then((userInfoResponse) => {
@@ -92,7 +89,6 @@ function App() {
   }
 
   function handleAddPlace(info) {
-    console.log("yes");
     apiObj
       .uploadCard(info)
       .then((newCard) => {
@@ -123,11 +119,9 @@ function App() {
     //in this case, if 1 of the likes is from the current user, we need to make the heart dark
     const isLiked = card.likes.some((user) => user._id === currentUser._id);
 
-    console.log("you liked the card", isLiked);
     // Send a request to the API and getting the updated card data
     //if !isLiked- if the card was not liked before and now the user wants to like it
     if (!isLiked) {
-      console.log("you like the card");
       apiObj.likeCard(card._id).then((newCard) => {
         setCards((state) =>
           state.map((currentCard) =>
@@ -138,7 +132,6 @@ function App() {
     }
     //if isLiked - if the user already liked it and is now unliking it
     else {
-      console.log("you unlike the card");
       apiObj.unlikeCard(card._id).then((newCard) => {
         setCards((state) =>
           state.map((currentCard) =>
@@ -150,7 +143,6 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    console.log("u deleted the card");
     apiObj
       .deleteCard(card._id)
       .then(() => {

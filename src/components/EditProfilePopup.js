@@ -20,18 +20,15 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 
   function handleNameChange(e) {
     setName(e.target.value);
-    console.log(name);
   }
 
   function handleDescriptionChange(e) {
     setDescription(e.target.value);
-    console.log(description);
   }
 
   function handleSubmit(e) {
     // Prevent the browser from navigating to the form address
     e.preventDefault();
-    console.log("submitted");
     onUpdateUser({
       name,
       about: description,

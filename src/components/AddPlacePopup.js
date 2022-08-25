@@ -19,7 +19,6 @@ export function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   function handleSubmit(e) {
     // Prevent the browser from navigating to the form address
     e.preventDefault();
-    console.log("submitted");
     onAddPlace({
       name: imageName,
       link: imageLink,
