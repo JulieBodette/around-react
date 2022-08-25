@@ -86,4 +86,4 @@ const apiObj = new Api({
   },
 });
 
-export { apiObj };
+export default apiObj;
