@@ -5,7 +5,6 @@ export function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   function handleSubmit(e) {
     // Prevent the browser from navigating to the form address
     e.preventDefault();
-    console.log("submitted");
     onUpdateAvatar({
       avatar: inputRef.current.value,
     });
