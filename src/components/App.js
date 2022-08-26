@@ -38,20 +38,14 @@ function App() {
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
 
   function handleEditAvatarClick() {
-    /*const modal = document.querySelector("#edit-avatar-modal");
-    modal.classList.add("modal_open");*/
     setIsEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
-    /*const modal = document.querySelector("#edit-profile-modal");
-    modal.classList.add("modal_open");*/
     setIsEditProfilePopupOpen(true);
   }
 
   function handleEditPlaceClick() {
-    /*const modal = document.querySelector("#add-card-modal");
-    modal.classList.add("modal_open");*/
     setIsAddPlacePopupOpen(true);
   }
 
