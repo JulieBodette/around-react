@@ -15,14 +15,22 @@ class Api {
     const url = this._baseUrl + "/cards";
     return fetch(url, {
       headers: this._headers,
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   getUserInfo() {
     const url = this._baseUrl + "/users/me";
     return fetch(url, {
       headers: this._headers,
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   patchUserAvatar(info) {
@@ -31,7 +39,11 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(info),
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   patchUserInfo(info) {
@@ -40,7 +52,11 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(info),
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   deleteCard(id) {
@@ -48,7 +64,11 @@ class Api {
     return fetch(url, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   uploadCard(info) {
@@ -57,7 +77,11 @@ class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(info),
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   likeCard(id) {
@@ -65,7 +89,11 @@ class Api {
     return fetch(url, {
       method: "PUT",
       headers: this._headers,
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   unlikeCard(id) {
@@ -73,7 +101,11 @@ class Api {
     return fetch(url, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._processResponse);
+    })
+      .then(this._processResponse)
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 }
 

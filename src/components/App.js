@@ -23,9 +23,14 @@ function App() {
   //this is called when the component is mounted. we pass it [] to make sure it only gets call once when its mounted
   //otherwise it would be called every time it updates
   React.useEffect(() => {
-    apiObj.getUserInfo().then((userInfoResponse) => {
-      setCurrentUser(userInfoResponse);
-    });
+    apiObj
+      .getUserInfo()
+      .then((userInfoResponse) => {
+        setCurrentUser(userInfoResponse);
+      })
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }, []);
 
   const [selectedCard, setSelectedCard] = useState(null);
@@ -70,7 +75,10 @@ function App() {
       .then((userInfoResponse) => {
         setCurrentUser(userInfoResponse);
       })
-      .then(closeAllPopups());
+      .then(closeAllPopups())
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   function handleUpdateAvatar(info) {
@@ -79,7 +87,10 @@ function App() {
       .then((userInfoResponse) => {
         setCurrentUser(userInfoResponse);
       })
-      .then(closeAllPopups());
+      .then(closeAllPopups())
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   function handleAddPlace(info) {
@@ -88,7 +99,10 @@ function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
       })
-      .then(closeAllPopups());
+      .then(closeAllPopups())
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
   }
 
   /////////////////////////////////////////////////////////////////////////////cards code
@@ -121,18 +135,25 @@ function App() {
           state.map((currentCard) =>
             currentCard._id === card._id ? newCard : currentCard
           )
-        );
+        ).catch((err) => {
+          console.log(err); // log the error to the console
+        });
       });
     }
     //if isLiked - if the user already liked it and is now unliking it
     else {
-      apiObj.unlikeCard(card._id).then((newCard) => {
-        setCards((state) =>
-          state.map((currentCard) =>
-            currentCard._id === card._id ? newCard : currentCard
-          )
-        );
-      });
+      apiObj
+        .unlikeCard(card._id)
+        .then((newCard) => {
+          setCards((state) =>
+            state.map((currentCard) =>
+              currentCard._id === card._id ? newCard : currentCard
+            )
+          );
+        })
+        .catch((err) => {
+          console.log(err); // log the error to the console
+        });
     }
   }
 
