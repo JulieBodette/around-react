@@ -20,26 +20,14 @@ import { AddPlacePopup } from "./AddPlacePopup";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  //this is called when the component is mounted. we pass it [] to make sure it only gets call once when its mounted
-  //otherwise it would be called every time it updates
-  React.useEffect(() => {
-    apiObj
-      .getUserInfo()
-      .then((userInfoResponse) => {
-        setCurrentUser(userInfoResponse);
-      })
-      .catch((err) => {
-        console.log(err); // log the error to the console
-      });
-  }, []);
-
+  /*state variable for the card the user clicked on/ is seeing the image popup of*/
   const [selectedCard, setSelectedCard] = useState(null);
-
+  /*state variable for the cards on the page */
+  const [cards, setCards] = useState([]);
   /*state variables responsible for visibility of popups*/
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
 
   function handleEditAvatarClick() {
@@ -105,22 +93,6 @@ function App() {
       });
   }
 
-  /////////////////////////////////////////////////////////////////////////////cards code
-  /*state variables */
-  const [cards, setCards] = useState([]);
-
-  React.useEffect(() => {
-    //load the initial cards from the server
-    apiObj
-      .getInitialCards()
-      .then((cardsResponse) => {
-        setCards(cardsResponse);
-      })
-      .catch((err) => {
-        console.log(err); // log the error to the console
-      });
-  }, []); //empty array tells it to only do once (when it is mounted)
-
   function handleCardLike(card) {
     // Check one more time if this card was already liked
     //The some() method tests whether at least one element in the array passes the test
@@ -170,6 +142,31 @@ function App() {
         console.log(err); // log the error to the console
       });
   }
+
+  //this is called when the component is mounted. we pass it [] to make sure it only gets call once when its mounted
+  //otherwise it would be called every time it updates
+  React.useEffect(() => {
+    apiObj
+      .getUserInfo()
+      .then((userInfoResponse) => {
+        setCurrentUser(userInfoResponse);
+      })
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
+  }, []);
+
+  //load the initial cards from the server
+  React.useEffect(() => {
+    apiObj
+      .getInitialCards()
+      .then((cardsResponse) => {
+        setCards(cardsResponse);
+      })
+      .catch((err) => {
+        console.log(err); // log the error to the console
+      });
+  }, []); //empty array tells it to only do once (when it is mounted)
 
   return (
     <UserContext.Provider value={currentUser}>
