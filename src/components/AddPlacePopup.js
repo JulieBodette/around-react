@@ -1,6 +1,6 @@
 import { PopupWithForm } from "./PopupWithForm.js";
 import { UserContext } from "../contexts/CurrentUserContext";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const [imageName, setImageName] = useState("");
@@ -26,6 +26,14 @@ export function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       owner: currentUser,
     });
   }
+
+  //set the image name and link to empty strings when the popup is opened/closed
+  //this will make it reset so the user does not see the old
+  useEffect(() => {
+    setImageName("");
+    setImageLink("");
+  }, [isOpen]);
+
   return (
     <PopupWithForm
       title="New Place"
