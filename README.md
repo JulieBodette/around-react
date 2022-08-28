@@ -10,6 +10,7 @@ info in {} indicates features that exist in the non-react version of this site a
 This project was coded in HTML, CSS, Javascript, JSX, and React.
 
 - [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+- [Additional Figma for the project](https://www.figma.com/file/xQVeb8gprjukPVKXiLXS5T/Sprint-9%3A-Applied-JavaScript?node-id=0%3A1)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
