@@ -61,9 +61,10 @@ function App() {
     apiObj
       .patchUserInfo(info)
       .then((userInfoResponse) => {
+        //we do these 2 commands in 1 .then statement because they don't have to be done sequentially
         setCurrentUser(userInfoResponse);
+        closeAllPopups();
       })
-      .then(closeAllPopups())
       .catch((err) => {
         console.log(err); // log the error to the console
       });
@@ -73,9 +74,10 @@ function App() {
     apiObj
       .patchUserAvatar(info)
       .then((userInfoResponse) => {
+        //we do these 2 commands in 1 .then statement because they don't have to be done sequentially
         setCurrentUser(userInfoResponse);
+        closeAllPopups();
       })
-      .then(closeAllPopups())
       .catch((err) => {
         console.log(err); // log the error to the console
       });
