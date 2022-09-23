@@ -35,6 +35,8 @@ class Api {
 
   patchUserAvatar(info) {
     const url = this._baseUrl + "/users/me/avatar";
+   // TO DO: check to make sure the url leads to a valid image
+   //https://www.codegrepper.com/code-examples/javascript/frameworks/jquery/how+to+check+if+image+url+is+valid+javascript
     return fetch(url, {
       method: "PATCH",
       headers: this._headers,
